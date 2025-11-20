@@ -1,6 +1,15 @@
+'use client'
+
 import { Truck, Package, Clock, Shield, MapPin, DollarSign, FileText, Layers, Zap, TrendingUp } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 
 export default function ServicesPage() {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
+
   const mainServices = [
     {
       icon: Truck,
@@ -81,45 +90,142 @@ export default function ServicesPage() {
     { category: 'Restricciones', items: ['Altura máxima: 4.20m', 'Cumplimiento de marco legal', 'Documentación requerida'] },
   ]
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30 
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  }
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      scale: 0.9 
+    },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  }
+
+  const iconVariants = {
+    hidden: { 
+      scale: 0,
+      rotate: -180
+    },
+    visible: {
+      scale: 1,
+      rotate: 0,
+      transition: {
+        type: "spring",
+        stiffness: 200,
+        duration: 0.8
+      }
+    }
+  }
+
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="py-20 md:py-32 bg-gradient-to-br from-primary to-primary/80">
+      <motion.section 
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="py-20 md:py-32 bg-gradient-to-br from-primary to-primary/80"
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 text-balance">
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="text-5xl md:text-6xl font-bold text-white mb-6 text-balance"
+            >
               Servicios de Transporte de Carga
-            </h1>
-            <p className="text-lg text-white/90 text-balance">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="text-lg text-white/90 text-balance"
+            >
               Soluciones integrales de transporte desde El Alto hacia Tarija y Bermejo con profesionalismo, seguridad y puntualidad garantizada.
-            </p>
+            </motion.p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Main Services */}
       <section className="py-20 md:py-32 bg-background">
         <div className="container mx-auto px-4">
-          <div className="mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-balance">
               Nuestros Servicios Principales
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl">
               Cada servicio está diseñado para satisfacer tus necesidades específicas de transporte.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            ref={ref}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
             {mainServices.map((service, index) => {
               const Icon = service.icon
               return (
-                <div
+                <motion.div
                   key={index}
-                  className="p-6 rounded-2xl bg-card border border-border hover:shadow-lg transition-all hover:-translate-y-1 group"
+                  variants={itemVariants}
+                  whileHover={{ 
+                    scale: 1.05,
+                    y: -10,
+                    transition: { type: "spring", stiffness: 300 }
+                  }}
+                  className="p-6 rounded-2xl bg-card border border-border hover:shadow-lg transition-all group cursor-pointer"
                 >
-                  <div className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                    <Icon className="w-6 h-6 text-primary" />
-                  </div>
+                  <motion.div 
+                    className="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"
+                    whileHover={{ rotate: 360 }}
+                  >
+                    <motion.div
+                      variants={iconVariants}
+                    >
+                      <Icon className="w-6 h-6 text-primary" />
+                    </motion.div>
+                  </motion.div>
                   <h3 className="font-bold text-lg text-foreground mb-2">
                     {service.title}
                   </h3>
@@ -129,63 +235,106 @@ export default function ServicesPage() {
                   <p className="text-xs text-muted-foreground/70 border-t border-border pt-3">
                     {service.details}
                   </p>
-                </div>
+                </motion.div>
               )
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Coverage & Routes */}
       <section className="py-20 md:py-32 bg-card">
         <div className="container mx-auto px-4">
-          <div className="mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-balance">
               Cobertura de Rutas
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl">
               Operamos exclusivamente en rutas cuidadosamente seleccionadas para garantizar eficiencia y confiabilidad.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-3 gap-8"
+          >
             {coverage.map((route, index) => (
-              <div key={index} className="flex flex-col items-center text-center p-8 rounded-2xl bg-background border border-border">
-                <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mb-4">
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                whileHover={{ scale: 1.05 }}
+                className="flex flex-col items-center text-center p-8 rounded-2xl bg-background border border-border"
+              >
+                <motion.div 
+                  className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mb-4"
+                  whileHover={{ scale: 1.1, rotate: 360 }}
+                >
                   <MapPin className="w-8 h-8 text-primary" />
-                </div>
+                </motion.div>
                 <h3 className="text-2xl font-bold text-foreground mb-2">{route.city}</h3>
                 <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm font-medium rounded-full mb-3">
                   {route.type}
                 </span>
                 <p className="text-muted-foreground">{route.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="mt-12 p-8 bg-primary/10 border border-accent/30 rounded-2xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="mt-12 p-8 bg-primary/10 border border-accent/30 rounded-2xl"
+          >
             <p className="text-center text-foreground text-lg">
               <strong>Nota importante:</strong> El servicio opera únicamente en dirección El Alto → Tarija/Bermejo (ida). No realizamos transporte desde Bermejo hacia La Paz.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Pricing & Parameters */}
       <section className="py-20 md:py-32 bg-background">
         <div className="container mx-auto px-4">
-          <div className="mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-balance">
               Tarifas y Parámetros
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl">
               Nuestras tarifas son variables y se calculan según múltiples factores para garantizar precios justos.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 gap-8"
+          >
             {pricing.map((section, index) => (
-              <div key={index} className="p-8 rounded-2xl bg-card border border-border">
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ scale: 1.02 }}
+                className="p-8 rounded-2xl bg-card border border-border"
+              >
                 <div className="flex items-center gap-3 mb-6">
                   <DollarSign className="w-6 h-6 text-accent" />
                   <h3 className="text-2xl font-bold text-foreground">
@@ -194,17 +343,30 @@ export default function ServicesPage() {
                 </div>
                 <ul className="space-y-3">
                   {section.items.map((item, itemIndex) => (
-                    <li key={itemIndex} className="flex items-start gap-3">
+                    <motion.li 
+                      key={itemIndex}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: itemIndex * 0.1 }}
+                      viewport={{ once: true }}
+                      className="flex items-start gap-3"
+                    >
                       <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
                       <span className="text-muted-foreground">{item}</span>
-                    </li>
+                    </motion.li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="mt-12 p-8 bg-accent/10 border border-accent rounded-2xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="mt-12 p-8 bg-accent/10 border border-accent rounded-2xl"
+          >
             <div className="flex items-start gap-4">
               <Zap className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
               <div>
@@ -214,32 +376,56 @@ export default function ServicesPage() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Procedure */}
       <section className="py-20 md:py-32 bg-card">
         <div className="container mx-auto px-4">
-          <div className="mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-balance">
               Procedimiento para Envíos
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl">
               Sigue estos sencillos pasos para enviar tu carga de manera segura y confiable.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
             {procedure.map((proc, index) => {
               const Icon = proc.icon
               return (
-                <div key={index} className="relative">
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05 }}
+                  className="relative"
+                >
                   <div className="p-6 rounded-2xl bg-background border border-border h-full flex flex-col">
-                    <div className="absolute -top-4 -left-4 w-10 h-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold text-lg">
+                    <motion.div 
+                      className="absolute -top-4 -left-4 w-10 h-10 bg-accent rounded-full flex items-center justify-center text-primary font-bold text-lg"
+                      whileHover={{ scale: 1.2, rotate: 360 }}
+                    >
                       {proc.step}
-                    </div>
-                    <Icon className="w-8 h-8 text-accent mb-4 mt-4" />
+                    </motion.div>
+                    <motion.div
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      <Icon className="w-8 h-8 text-accent mb-4 mt-4" />
+                    </motion.div>
                     <h3 className="font-bold text-lg text-foreground mb-3">
                       {proc.title}
                     </h3>
@@ -248,34 +434,64 @@ export default function ServicesPage() {
                     </p>
                   </div>
                   {index < procedure.length - 1 && (
-                    <div className="hidden lg:block absolute top-1/2 -right-6 w-6 h-0.5 bg-accent/30" />
+                    <motion.div 
+                      className="hidden lg:block absolute top-1/2 -right-6 w-6 h-0.5 bg-accent/30"
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      transition={{ delay: 0.5 + index * 0.1 }}
+                      viewport={{ once: true }}
+                    />
                   )}
-                </div>
+                </motion.div>
               )
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Fleet */}
       <section className="py-20 md:py-32 bg-background">
         <div className="container mx-auto px-4">
-          <div className="mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="mb-16"
+          >
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-balance">
               Nuestra Flota de Vehículos
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl">
               Contamos con vehículos de primera calidad y mantenimiento constante para garantizar tus envíos.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid md:grid-cols-2 gap-8"
+          >
             {vehicles.map((vehicle, index) => (
-              <div key={index} className="p-8 rounded-2xl bg-card border border-border hover:shadow-lg transition-shadow">
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ 
+                  scale: 1.02,
+                  y: -5,
+                  transition: { type: "spring", stiffness: 300 }
+                }}
+                className="p-8 rounded-2xl bg-card border border-border hover:shadow-lg transition-shadow"
+              >
                 <div className="flex items-start gap-4 mb-6">
-                  <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                  <motion.div 
+                    className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0"
+                    whileHover={{ rotate: 360 }}
+                  >
                     <Truck className="w-6 h-6 text-primary" />
-                  </div>
+                  </motion.div>
                   <div>
                     <h3 className="text-2xl font-bold text-foreground">{vehicle.brand}</h3>
                     <p className="text-muted-foreground text-sm">{vehicle.type}</p>
@@ -291,11 +507,17 @@ export default function ServicesPage() {
                     <p className="text-foreground font-medium">{vehicle.details}</p>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="mt-12 p-8 bg-primary/5 border border-primary/20 rounded-2xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="mt-12 p-8 bg-primary/5 border border-primary/20 rounded-2xl"
+          >
             <div className="flex items-start gap-4">
               <TrendingUp className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
               <div>
@@ -305,27 +527,47 @@ export default function ServicesPage() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-32 bg-primary">
+      <motion.section
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="py-20 md:py-32 bg-primary"
+      >
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 text-balance">
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-bold text-white mb-6 text-balance"
+          >
             Confía en Nuestro Servicio
-          </h2>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8 text-balance">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-lg text-white/90 max-w-2xl mx-auto mb-8 text-balance"
+          >
             Somos tu aliado confiable para transportar tu carga de manera segura, puntual y profesional.
-          </p>
-          <a
+          </motion.p>
+          <motion.a
             href="/contact"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             className="inline-block px-8 py-3 bg-accent text-primary font-bold rounded-lg hover:bg-accent/90 transition-colors"
           >
             Solicitar Cotización
-          </a>
+          </motion.a>
         </div>
-      </section>
+      </motion.section>
     </main>
   )
 }
