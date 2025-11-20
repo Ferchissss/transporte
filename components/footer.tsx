@@ -70,19 +70,19 @@ export default function Footer() {
           <div>
             <h4 className="font-bold mb-4">Síguenos</h4>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#4ec3b3] hover:text-[#152342] transition-colors">
+              <a href="https://www.facebook.com/share/17pWT1BBL2/?mibextid=wwXIfr" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#4ec3b3] hover:text-[#152342] transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
               <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#4ec3b3] hover:text-[#152342] transition-colors">
                 <FaWhatsapp className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#4ec3b3] hover:text-[#152342] transition-colors">
+              <a href="https://www.instagram.com/transbeluga?igsh=cGs1cmphenFjMGx5&utm_source=qr" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#4ec3b3] hover:text-[#152342] transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#4ec3b3] hover:text-[#152342] transition-colors">
+              <a href="https://www.youtube.com/@TransBeluga" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#4ec3b3] hover:text-[#152342] transition-colors">
                 <Youtube className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#4ec3b3] hover:text-[#152342] transition-colors">
+              <a href="www.tiktok.com/@trans.beluga" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#4ec3b3] hover:text-[#152342] transition-colors">
                 <FaTiktok className="w-5 h-5" />
               </a>
             </div>
