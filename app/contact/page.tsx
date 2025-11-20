@@ -16,7 +16,7 @@ export default function Contact() {
           Hablemos de tu <span className="text-[#4ec3b3]">Próximo Envío</span>
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Olvídate de los formularios largos. Elige tu canal preferido y conecta directamente con nuestro equipo
+          Elige tu canal preferido y conecta directamente con nuestro equipo
           logístico en tiempo real.
         </p>
       </div>
@@ -26,7 +26,7 @@ export default function Contact() {
         <div className="grid md:grid-cols-3 gap-6 mb-16">
           {/* WhatsApp - Primary CTA */}
           <a
-            href="https://wa.me/59178901234"
+            href="https://wa.link/fbjshv"
             target="_blank"
             rel="noopener noreferrer"
             className="group p-8 rounded-3xl bg-[#25D366]/5 border border-[#25D366]/20 hover:bg-[#25D366]/10 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden"
@@ -56,15 +56,22 @@ export default function Contact() {
               <Phone className="w-8 h-8 text-[#4ec3b3]" />
             </div>
             <h3 className="text-2xl font-bold mb-2 text-foreground">Llámanos</h3>
-            <p className="text-muted-foreground mb-6">Atención personalizada por nuestros agentes de servicio.</p>
-            <span className="text-[#4ec3b3] font-bold flex items-center gap-2 mt-auto">
-              +591 2 248 1234 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </span>
+            <div className="flex flex-col gap-2">
+              <a href="tel:+59122481234" className="text-[#4ec3b3] font-bold hover:underline">
+                La Paz: +591 2 248 1234
+              </a>
+              <a href="tel:+59133765432" className="text-[#4ec3b3] font-bold hover:underline">
+                Santa Cruz: +591 3 376 5432
+              </a>
+              <a href="tel:+59141234567" className="text-[#4ec3b3] font-bold hover:underline">
+                Cochabamba: +591 4 123 4567
+              </a>
+            </div>
           </a>
 
           {/* Email */}
           <a
-            href="mailto:info@transbeluga.com"
+            href="trasnbeluga2025@gmail.com"
             className="group p-8 rounded-3xl bg-card border border-border hover:border-[#4ec3b3]/50 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
@@ -76,7 +83,7 @@ export default function Contact() {
             <h3 className="text-2xl font-bold mb-2 text-foreground">Correo</h3>
             <p className="text-muted-foreground mb-6">Para cuentas corporativas, facturación y reclamos formales.</p>
             <span className="text-[#4ec3b3] font-bold flex items-center gap-2 mt-auto">
-              info@transbeluga.com <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              trasnbeluga2025@gmail.com <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </span>
           </a>
         </div>
@@ -101,7 +108,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold mb-1 text-foreground">El Alto (Central)</h4>
-                  <p className="text-muted-foreground mb-2">Av. 6 de Marzo, Zona Villa Bolívar "A", Calle 3 #123</p>
+                  <p className="text-muted-foreground mb-2">Villa Bolivar B Calle Ross Telles Y #125</p>
                   <a href="#" className="text-sm text-[#4ec3b3] hover:underline flex items-center gap-1">
                     Ver en mapa <ArrowRight className="w-3 h-3" />
                   </a>
@@ -114,13 +121,6 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold mb-1 text-foreground">Tarija</h4>
-                  <p className="text-muted-foreground mb-2">Av. Circunvalación esq. La Paz, Zona Central</p>
-                  <a
-                    href="#"
-                    className="text-sm text-muted-foreground hover:text-[#4ec3b3] transition-colors flex items-center gap-1"
-                  >
-                    Ver en mapa <ArrowRight className="w-3 h-3" />
-                  </a>
                 </div>
               </div>
 
@@ -130,7 +130,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-lg font-bold mb-1 text-foreground">Bermejo</h4>
-                  <p className="text-muted-foreground mb-2">Calle Litoral entre Av. Petrolera y Bolívar</p>
+                  <p className="text-muted-foreground mb-2">Calle Real Madrid y cochabamba</p>
                   <a
                     href="#"
                     className="text-sm text-muted-foreground hover:text-[#4ec3b3] transition-colors flex items-center gap-1"
@@ -154,11 +154,11 @@ export default function Contact() {
               <div className="space-y-4">
                 <div className="flex justify-between items-center border-b border-border pb-4 border-dashed">
                   <span className="font-medium text-foreground">Lunes a Viernes</span>
-                  <span className="text-muted-foreground bg-muted px-3 py-1 rounded-full text-sm">08:30 - 18:30</span>
+                  <span className="text-muted-foreground bg-muted px-3 py-1 rounded-full text-sm">08:00 - 18:00</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-border pb-4 border-dashed">
                   <span className="font-medium text-foreground">Sábados</span>
-                  <span className="text-muted-foreground bg-muted px-3 py-1 rounded-full text-sm">09:00 - 13:00</span>
+                  <span className="text-muted-foreground bg-muted px-3 py-1 rounded-full text-sm">08:00 - 14:00</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="font-medium text-foreground">Domingos y Feriados</span>
