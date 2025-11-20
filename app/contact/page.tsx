@@ -71,7 +71,7 @@ export default function Contact() {
 
           {/* Email */}
           <a
-            href="trasnbeluga2025@gmail.com"
+            href="mailto:trasnbeluga2025@gmail.com?subject=Hola&body=Mensaje%20aqui"
             className="group p-8 rounded-3xl bg-card border border-border hover:border-[#4ec3b3]/50 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
@@ -188,3 +188,4 @@ export default function Contact() {
     </div>
   )
 }
+
