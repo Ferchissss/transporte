@@ -1,5 +1,4 @@
 import { Truck, Package, Clock, Shield, MapPin, DollarSign, FileText, Layers, Zap, TrendingUp } from 'lucide-react'
-import Link from 'next/link'
 
 export default function ServicesPage() {
   const mainServices = [
@@ -319,12 +318,12 @@ export default function ServicesPage() {
           <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8 text-balance">
             Somos tu aliado confiable para transportar tu carga de manera segura, puntual y profesional.
           </p>
-          <Link
-            href="/quote"
+          <a
+            href="/contact"
             className="inline-block px-8 py-3 bg-accent text-primary font-bold rounded-lg hover:bg-accent/90 transition-colors"
           >
             Solicitar Cotización
-          </Link>
+          </a>
         </div>
       </section>
     </main>

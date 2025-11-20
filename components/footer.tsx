@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
+import { Facebook, Instagram, Youtube, Heart } from 'lucide-react'
+import { FaWhatsapp, FaTiktok } from 'react-icons/fa'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -48,19 +49,19 @@ export default function Footer() {
             <h4 className="font-bold mb-4">Legal</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="text-gray-400 hover:text-[#4ec3b3] transition-colors">
+                <Link href="/privacy-policy" className="text-gray-400 hover:text-[#4ec3b3] transition-colors">
                   Política de Privacidad
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-[#4ec3b3] transition-colors">
+                <Link href="/terms-of-service" className="text-gray-400 hover:text-[#4ec3b3] transition-colors">
                   Términos de Servicio
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-[#4ec3b3] transition-colors">
+                <Link href="/contact" className="text-gray-400 hover:text-[#4ec3b3] transition-colors">
                   Contacto
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -73,13 +74,16 @@ export default function Footer() {
                 <Facebook className="w-5 h-5" />
               </a>
               <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#4ec3b3] hover:text-[#152342] transition-colors">
-                <Twitter className="w-5 h-5" />
+                <FaWhatsapp className="w-5 h-5" />
               </a>
               <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#4ec3b3] hover:text-[#152342] transition-colors">
                 <Instagram className="w-5 h-5" />
               </a>
               <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#4ec3b3] hover:text-[#152342] transition-colors">
-                <Linkedin className="w-5 h-5" />
+                <Youtube className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-[#4ec3b3] hover:text-[#152342] transition-colors">
+                <FaTiktok className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -88,7 +92,9 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
             <p>&copy; {year} Trans Beluga. Todos los derechos reservados.</p>
-            <p>Hecho con ❤️ en Bolivia</p>
+            <p className="flex items-center gap-1">
+              Hecho con <Heart className="w-4 h-4 text-red-500 fill-red-500" /> en Bolivia
+            </p>
           </div>
         </div>
       </div>

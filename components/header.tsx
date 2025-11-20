@@ -178,13 +178,17 @@ export default function Header() {
                 )}
               </div>
             ))}
-            <button className={`w-full px-6 py-2 rounded-lg font-medium transition-all ${
+            <Link 
+              href="/quote"
+              className={`w-full px-6 py-2 rounded-lg font-medium text-center transition-all ${
               shouldShowSolidHeader
                 ? 'bg-[#4ec3b3] text-[#152342] hover:bg-opacity-90'
                 : 'bg-white/20 text-white backdrop-blur-sm hover:bg-white/30'
-            } mt-2`}>
+            } mt-2`}
+              onClick={() => setIsOpen(false)}
+            >
               Solicitar Cotización
-            </button>
+            </Link>
           </nav>
         </div>
       )}

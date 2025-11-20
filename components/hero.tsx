@@ -8,9 +8,56 @@ import { useEffect, useState } from "react"
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false)
+  const [yearsCount, setYearsCount] = useState(0)
+  const [shipmentsCount, setShipmentsCount] = useState(0)
+  const [punctualityCount, setPunctualityCount] = useState(0)
+  const [hasAnimated, setHasAnimated] = useState(false)
   useEffect(() => {
     setIsVisible(true)
   }, [])
+   useEffect(() => {
+    if (!hasAnimated) {
+      // Animar años de experiencia (0 a 15)
+      const yearsTimer = setInterval(() => {
+        setYearsCount(prev => {
+          if (prev >= 15) {
+            clearInterval(yearsTimer)
+            return 15
+          }
+          return prev + 1
+        })
+      }, 100)
+
+      // Animar envíos mensuales (0 a 1000)
+      const shipmentsTimer = setInterval(() => {
+        setShipmentsCount(prev => {
+          if (prev >= 1000) {
+            clearInterval(shipmentsTimer)
+            return 1000
+          }
+          return prev + 25
+        })
+      }, 20)
+
+      // Animar puntualidad (0 a 99)
+      const punctualityTimer = setInterval(() => {
+        setPunctualityCount(prev => {
+          if (prev >= 99) {
+            clearInterval(punctualityTimer)
+            setHasAnimated(true)
+            return 99
+          }
+          return prev + 1
+        })
+      }, 30)
+
+      return () => {
+        clearInterval(yearsTimer)
+        clearInterval(shipmentsTimer)
+        clearInterval(punctualityTimer)
+      }
+    }
+  }, [hasAnimated])
   return (
     <section className="relative bg-gradient-to-br from-[#152342] to-[#1a2f4a] text-white pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden min-h-screen flex items-center">
       {/* Decorative elements */}
@@ -42,7 +89,7 @@ export default function Hero() {
               Conectamos Bolivia con <span className="text-[#4ec3b3]">confianza</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed">
-              Transporte interurbano de cargas y pasajeros con los más altos estándares de puntualidad, seguridad y respeto. Como la beluga en el mar, nos movemos con suavidad pero con firmeza.
+              Transporte interurbano de carga y encomienda con los más altos estándares de puntualidad, seguridad y respeto. Como la beluga en el mar, nos movemos con suavidad pero con firmeza.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-12">
@@ -60,18 +107,24 @@ export default function Hero() {
               </Link>
             </div>
 
-            {/* Stats */}
+            {/* Stats con animación de contar */}
             <div className="grid grid-cols-3 gap-6 md:gap-8">
               <div>
-                <div className="text-3xl md:text-4xl font-bold text-[#4ec3b3] mb-2">15+</div>
+                <div className="text-3xl md:text-4xl font-bold text-[#4ec3b3] mb-2">
+                  {yearsCount}+
+                </div>
                 <div className="text-sm text-gray-400">Años de experiencia</div>
               </div>
               <div>
-                <div className="text-3xl md:text-4xl font-bold text-[#4ec3b3] mb-2">1000+</div>
+                <div className="text-3xl md:text-4xl font-bold text-[#4ec3b3] mb-2">
+                  {shipmentsCount}+
+                </div>
                 <div className="text-sm text-gray-400">Envíos mensuales</div>
               </div>
               <div>
-                <div className="text-3xl md:text-4xl font-bold text-[#4ec3b3] mb-2">99%</div>
+                <div className="text-3xl md:text-4xl font-bold text-[#4ec3b3] mb-2">
+                  {punctualityCount}%
+                </div>
                 <div className="text-sm text-gray-400">Puntualidad</div>
               </div>
             </div>

@@ -2,8 +2,15 @@
 
 import { Truck, MapPin, DollarSign, FileText } from 'lucide-react'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
 
 export default function ServicesSection() {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
+
   const services = [
     {
       icon: Truck,
@@ -22,24 +29,79 @@ export default function ServicesSection() {
     },
   ]
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30 
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  }
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      x: -30 
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  }
+
   return (
     <section id="services" className="py-20 md:py-32 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="mb-16">
+        {/* Header con animación */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Servicios Ofrecidos
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl">
             Contamos con una amplia variedad de opciones de transporte adaptadas a tus necesidades.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        {/* Servicios con animación escalonada */}
+        <motion.div
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          className="grid md:grid-cols-3 gap-8 mb-16"
+        >
           {services.map((service, index) => {
             const Icon = service.icon
             return (
-              <div
+              <motion.div
                 key={index}
+                variants={itemVariants}
                 className="p-8 rounded-2xl bg-card border border-border hover:border-[#4ec3b3] hover:shadow-lg transition-all group"
               >
                 <div className="w-16 h-16 bg-[#152342] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#4ec3b3] transition-colors dark:bg-[#4ec3b3] dark:group-hover:bg-[#152342]">
@@ -51,14 +113,25 @@ export default function ServicesSection() {
                 <p className="text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
-              </div>
+              </motion.div>
             )
           })}
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Tarjetas inferiores con animación */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="grid md:grid-cols-2 gap-8"
+        >
           {/* Coverage and Routes */}
-          <div className="p-8 rounded-2xl bg-card border border-border">
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="p-8 rounded-2xl bg-card border border-border"
+          >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-[#152342] rounded-lg flex items-center justify-center dark:bg-[#4ec3b3]">
                 <MapPin className="w-6 h-6 text-[#4ec3b3] dark:text-[#152342]" />
@@ -80,10 +153,14 @@ export default function ServicesSection() {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Rates */}
-          <div className="p-8 rounded-2xl bg-card border border-border">
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300 }}
+            className="p-8 rounded-2xl bg-card border border-border"
+          >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 bg-[#152342] rounded-lg flex items-center justify-center dark:bg-[#4ec3b3]">
                 <DollarSign className="w-6 h-6 text-[#4ec3b3] dark:text-[#152342]" />
@@ -108,15 +185,20 @@ export default function ServicesSection() {
                   <span className="text-foreground">Tipo de mercancía</span>
                 </li>
               </ul>
-              <Link 
-                href="/quote"
-                className="mt-4 px-6 py-2 bg-[#4ec3b3] text-[#152342] rounded-lg font-semibold hover:bg-opacity-90 transition-all hover:scale-105 text-sm inline-block"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                Solicitar Cotización
-              </Link>
+                <Link 
+                  href="/quote"
+                  className="mt-4 px-6 py-2 bg-[#4ec3b3] text-[#152342] rounded-lg font-semibold hover:bg-opacity-90 transition-all text-sm inline-block"
+                >
+                  Solicitar Cotización
+                </Link>
+              </motion.div>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   )

@@ -193,8 +193,12 @@ export default function BoliviaAnimation() {
     }
 
     const animate = () => {
-      // Clear canvas with transparent background instead of gradient
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      // Clear canvas with gradient background
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height)
+      gradient.addColorStop(0, '#152342')
+      gradient.addColorStop(1, '#1a2f4a')
+      ctx.fillStyle = gradient
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
 
       time += 0.016
 
@@ -223,6 +227,7 @@ export default function BoliviaAnimation() {
         ref={canvasRef}
         className="w-full h-full"
       />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#152342]/30 to-transparent pointer-events-none"></div>
     </div>
   )
 }

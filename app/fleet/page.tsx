@@ -95,15 +95,15 @@ export default function About() {
               Somos <span className="text-[#4ec3b3]">Beluga</span>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Transporte interurbano de cargas y pasajeros con altos estándares de puntualidad, seguridad y respeto. Conectamos El Alto con Tarija y Bermejo, garantizando una experiencia eficiente, amable y confiable.
+              Transporte interurbano de cargas y encomiendas con altos estándares de puntualidad, seguridad y respeto. Conectamos El Alto con Tarija y Bermejo, garantizando una experiencia eficiente, amable y confiable.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-8 py-3 bg-[#4ec3b3] text-[#152342] font-bold rounded-lg hover:bg-opacity-90 transition-all">
+              <Link href="/blog" className="px-8 py-3 bg-[#4ec3b3] text-[#152342] font-bold rounded-lg hover:bg-opacity-90 transition-all text-center">
                 Conoce Más
-              </button>
-              <button className="px-8 py-3 border-2 border-[#4ec3b3] text-[#4ec3b3] font-bold rounded-lg hover:bg-[#4ec3b3]/10 transition-all">
+              </Link>
+              <Link href="/contact" className="px-8 py-3 border-2 border-[#4ec3b3] text-[#4ec3b3] font-bold rounded-lg hover:bg-[#4ec3b3]/10 transition-all text-center">
                 Contactar
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -165,32 +165,117 @@ export default function About() {
         </div>
       </section>
 
-      {/* Valores Principales */}
-      <section className="py-20 md:py-32">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Nuestros Valores
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Principios que guían cada decisión y acción en Beluga.
-            </p>
-          </div>
+      {/* Nuestro Equipo */}
+<section className="py-20 md:py-32">
+  <div className="container mx-auto px-4">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+        Nuestro Equipo
+      </h2>
+      <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        Profesionales comprometidos que hacen posible cada envío exitoso.
+      </p>
+    </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-            {values.map((value, index) => {
-              const Icon = value.icon
-              return (
-                <div key={index} className="bg-card rounded-2xl p-6 border border-border hover:shadow-lg transition-shadow">
-                  <Icon className="w-10 h-10 text-[#4ec3b3] mb-4" />
-                  <h3 className="text-lg font-bold text-foreground mb-2">{value.title}</h3>
-                  <p className="text-sm text-muted-foreground">{value.description}</p>
-                </div>
-              )
-            })}
-          </div>
+    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      {/* Gerente General */}
+      <div className="bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-shadow group">
+        <div className="relative h-64 overflow-hidden">
+          <img
+            src="/team/gerente-general.jpg"
+            alt="Gerente General"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
         </div>
-      </section>
+        <div className="p-6">
+          <h3 className="text-xl font-bold text-foreground mb-2">Carlos Mendoza</h3>
+          <p className="text-[#4ec3b3] font-semibold mb-3">Gerente General</p>
+          <p className="text-sm text-muted-foreground">Responsable de la operación y estrategia de la empresa con más de 15 años de experiencia en transporte.</p>
+        </div>
+      </div>
+
+      {/* Encargados de Logística */}
+      <div className="bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-shadow group">
+        <div className="relative h-64 overflow-hidden">
+          <img
+            src="/team/encargados-logistica.jpg"
+            alt="Encargados de Logística"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        <div className="p-6">
+          <h3 className="text-xl font-bold text-foreground mb-2">Ana Rodríguez & Marco López</h3>
+          <p className="text-[#4ec3b3] font-semibold mb-3">Encargados de Logística</p>
+          <p className="text-sm text-muted-foreground">Coordinan operaciones y rutas desde La Paz, asegurando la eficiencia en cada envío.</p>
+        </div>
+      </div>
+
+      {/* Cargadores y Descargadores */}
+      <div className="bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-shadow group">
+        <div className="relative h-64 overflow-hidden">
+          <img
+            src="/team/equipo-carga.jpg"
+            alt="Equipo de Carga"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        <div className="p-6">
+          <h3 className="text-xl font-bold text-foreground mb-2">Equipo de Carga</h3>
+          <p className="text-[#4ec3b3] font-semibold mb-3">5 Especialistas</p>
+          <p className="text-sm text-muted-foreground">Profesionales en La Paz y Bermejo especializados en el manejo seguro de carga.</p>
+        </div>
+      </div>
+
+      {/* Conductores */}
+      <div className="bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-shadow group">
+        <div className="relative h-64 overflow-hidden">
+          <img
+            src="/team/conductores.jpg"
+            alt="Conductores"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        <div className="p-6">
+          <h3 className="text-xl font-bold text-foreground mb-2">Juan Pérez & Luis García</h3>
+          <p className="text-[#4ec3b3] font-semibold mb-3">Conductores Profesionales</p>
+          <p className="text-sm text-muted-foreground">Choferes con amplia experiencia en rutas nacionales y manejo seguro.</p>
+        </div>
+      </div>
+
+      {/* Secretaria */}
+      <div className="bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-shadow group">
+        <div className="relative h-64 overflow-hidden">
+          <img
+            src="/team/secretaria.jpg"
+            alt="Secretaria"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        <div className="p-6">
+          <h3 className="text-xl font-bold text-foreground mb-2">María Fernández</h3>
+          <p className="text-[#4ec3b3] font-semibold mb-3">Secretaria Administrativa</p>
+          <p className="text-sm text-muted-foreground">Atención al cliente y gestión administrativa en nuestra oficina de Bermejo.</p>
+        </div>
+      </div>
+
+      {/* Equipo Completo */}
+      <div className="bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-shadow group">
+        <div className="relative h-64 overflow-hidden">
+          <img
+            src="/team/equipo-completo.jpg"
+            alt="Equipo Completo Beluga"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        </div>
+        <div className="p-6">
+          <h3 className="text-xl font-bold text-foreground mb-2">Familia Beluga</h3>
+          <p className="text-[#4ec3b3] font-semibold mb-3">11 Profesionales</p>
+          <p className="text-sm text-muted-foreground">Un equipo unido comprometido con brindar el mejor servicio de transporte.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Por Qué Elegirnos */}
       <section className="py-20 md:py-32 bg-muted/30">
@@ -276,16 +361,10 @@ export default function About() {
             Contáctanos hoy y descubre por qué empresas en Bolivia confían en nosotros para sus cargas.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/quote"
-              className="px-8 py-3 bg-white text-[#152342] font-bold rounded-lg hover:bg-gray-100 transition-all text-center"
-            >
+            <Link href="/quote" className="px-8 py-3 bg-white text-[#152342] font-bold rounded-lg hover:bg-gray-100 transition-all text-center">
               Solicitar Cotización
             </Link>
-            <Link 
-              href="/contact"
-              className="px-8 py-3 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all text-center"
-            >
+            <Link href="/contact" className="px-8 py-3 border-2 border-white text-white font-bold rounded-lg hover:bg-white/10 transition-all text-center">
               Ver Contacto
             </Link>
           </div>
