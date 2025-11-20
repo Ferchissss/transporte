@@ -58,13 +58,13 @@ export default function Contact() {
             <h3 className="text-2xl font-bold mb-2 text-foreground">Llámanos</h3>
             <div className="flex flex-col gap-2">
               <a href="tel:+59122481234" className="text-[#4ec3b3] font-bold hover:underline">
-                La Paz: +591 2 248 1234
+                La Paz: +591 78844645
               </a>
               <a href="tel:+59133765432" className="text-[#4ec3b3] font-bold hover:underline">
-                Santa Cruz: +591 3 376 5432
+                Tarija: +591 62544242
               </a>
               <a href="tel:+59141234567" className="text-[#4ec3b3] font-bold hover:underline">
-                Cochabamba: +591 4 123 4567
+                Bermejo: +591 74847672
               </a>
             </div>
           </a>
@@ -188,4 +188,5 @@ export default function Contact() {
     </div>
   )
 }
+
 
