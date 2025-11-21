@@ -17,22 +17,8 @@ export const metadata: Metadata = {
     "Transporte interurbano de cargas y pasajeros con puntualidad, seguridad y calidez. Conectamos Bolivia con excelencia.",
   generator: "v0.app",
   icons: {
-    icon: [
-      {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
-      },
-    ],
-    apple: "/apple-icon.png",
-  },
+  icon: "/favicon.ico?v=2",
+}
 }
 
 export default function RootLayout({

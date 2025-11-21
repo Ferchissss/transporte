@@ -1,3 +1,5 @@
+'use client'
+
 import { Phone, Mail, MapPin, Clock, MessageCircle, ArrowRight, Globe } from "lucide-react"
 
 export default function Contact() {
@@ -44,10 +46,10 @@ export default function Contact() {
             </span>
           </a>
 
-          {/* Phone */}
-          <a
-            href="tel:+59122481234"
-            className="group p-8 rounded-3xl bg-card border border-border hover:border-[#4ec3b3]/50 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden"
+          {/* Phone - Alternativa con botones */}
+          <div
+            className="group p-8 rounded-3xl bg-card border border-border hover:border-[#4ec3b3]/50 transition-all duration-300 flex flex-col items-center text-center relative overflow-hidden cursor-pointer"
+            onClick={() => window.open('tel:+59122481234', '_self')}
           >
             <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
               <Phone className="w-24 h-24 text-foreground" />
@@ -67,8 +69,7 @@ export default function Contact() {
                 Bermejo: +591 74847672
               </a>
             </div>
-          </a>
-
+          </div>
           {/* Email */}
           <a
             href="https://mail.google.com/mail/?view=cm&fs=1&to=trasnbeluga2025@gmail.com" 

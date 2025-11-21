@@ -44,18 +44,14 @@ export default function Header() {
         : 'bg-transparent'
     }`}>
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-gradient-to-br from-[#4ec3b3] to-[#2a9b8d] rounded-lg flex items-center justify-center text-white font-bold text-lg">
-            Bt
-          </div>
-          <span className={`font-bold text-lg transition-colors ${
-            shouldShowSolidHeader ? 'text-foreground' : 'text-white'
-          } hidden sm:inline`}>
-            <span className={shouldShowSolidHeader ? 'text-muted-foreground' : 'text-white/80'}>trans</span>
-            <span className={shouldShowSolidHeader ? 'text-foreground' : 'text-white'}>beluga</span>
-          </span>
-        </div>
+        {/* Logo único con imagen que cambia según el fondo */}
+        <Link href="/" className="flex items-center">
+          <img 
+            src={shouldShowSolidHeader ? "/logo1.png" : "/logo2.png"} 
+            alt="Beluga Transporte"
+            className="h-8 w-auto" // Ajusta la altura según necesites
+          />
+        </Link>
 
         {/* Desktop Menu */}
         <nav className="hidden md:flex items-center gap-8">

@@ -3,6 +3,7 @@
 import { Truck, Package, Clock, Shield, MapPin, DollarSign, FileText, Layers, Zap, TrendingUp } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import Image from 'next/image'
 
 export default function ServicesPage() {
   const [ref, inView] = useInView({
@@ -149,15 +150,26 @@ export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
-      <motion.section 
+      <motion.section
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="py-20 md:py-32 bg-gradient-to-br from-primary to-primary/80"
+        className="relative py-20 md:py-32 overflow-hidden"
       >
-        <div className="container mx-auto px-4">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/hero-transport.jpg"
+            alt="Transport logistics background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/75 to-primary/60" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
@@ -165,13 +177,14 @@ export default function ServicesPage() {
             >
               Servicios de Transporte de Carga
             </motion.h1>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
               className="text-lg text-white/90 text-balance"
             >
-              Soluciones integrales de transporte desde El Alto hacia Tarija y Bermejo con profesionalismo, seguridad y puntualidad garantizada.
+              Soluciones integrales de transporte desde El Alto hacia Tarija y Bermejo con profesionalismo, seguridad y
+              puntualidad garantizada.
             </motion.p>
           </div>
         </div>
@@ -243,8 +256,13 @@ export default function ServicesPage() {
       </section>
 
       {/* Coverage & Routes */}
-      <section className="py-20 md:py-32 bg-card">
-        <div className="container mx-auto px-4">
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image src="/bermejo-bolivia-tropical-border.jpg" alt="Bolivia landscape" fill className="object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-primary/60" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -252,10 +270,8 @@ export default function ServicesPage() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-balance">
-              Cobertura de Rutas
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-balance">Cobertura de Rutas</h2>
+            <p className="text-lg text-white/90 max-w-2xl">
               Operamos exclusivamente en rutas cuidadosamente seleccionadas para garantizar eficiencia y confiabilidad.
             </p>
           </motion.div>
@@ -272,19 +288,19 @@ export default function ServicesPage() {
                 key={index}
                 variants={cardVariants}
                 whileHover={{ scale: 1.05 }}
-                className="flex flex-col items-center text-center p-8 rounded-2xl bg-background border border-border"
+                className="p-8 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:border-white/40 transition-colors"
               >
-                <motion.div 
-                  className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mb-4"
+                <motion.div
+                  className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mb-4 shadow-lg"
                   whileHover={{ scale: 1.1, rotate: 360 }}
                 >
                   <MapPin className="w-8 h-8 text-primary" />
                 </motion.div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">{route.city}</h3>
-                <span className="inline-block px-3 py-1 bg-accent/20 text-accent text-sm font-medium rounded-full mb-3">
+                <h3 className="text-2xl font-bold text-white mb-2">{route.city}</h3>
+                <span className="inline-block px-3 py-1 bg-accent/30 text-white text-sm font-medium rounded-full mb-3">
                   {route.type}
                 </span>
-                <p className="text-muted-foreground">{route.description}</p>
+                <p className="text-white/90">{route.description}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -294,10 +310,11 @@ export default function ServicesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="mt-12 p-8 bg-primary/10 border border-accent/30 rounded-2xl"
+            className="mt-12 p-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl"
           >
-            <p className="text-center text-foreground text-lg">
-              <strong>Nota importante:</strong> El servicio opera únicamente en dirección El Alto → Tarija/Bermejo (ida). No realizamos transporte desde Bermejo hacia La Paz.
+            <p className="text-center text-white text-lg">
+              <strong>Nota importante:</strong> El servicio opera únicamente en dirección El Alto → Tarija/Bermejo
+              (ida). No realizamos transporte desde Bermejo hacia La Paz.
             </p>
           </motion.div>
         </div>
@@ -450,8 +467,13 @@ export default function ServicesPage() {
       </section>
 
       {/* Fleet */}
-      <section className="py-20 md:py-32 bg-background">
-        <div className="container mx-auto px-4">
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <Image src="/el-alto-bolivia-city-mountains.jpg" alt="Bolivia mountains" fill className="object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/85 to-primary/75" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -459,10 +481,8 @@ export default function ServicesPage() {
             viewport={{ once: true }}
             className="mb-16"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-balance">
-              Nuestra Flota de Vehículos
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-balance">Nuestra Flota de Vehículos</h2>
+            <p className="text-lg text-white/90 max-w-2xl">
               Contamos con vehículos de primera calidad y mantenimiento constante para garantizar tus envíos.
             </p>
           </motion.div>
@@ -478,33 +498,33 @@ export default function ServicesPage() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.02,
                   y: -5,
-                  transition: { type: "spring", stiffness: 300 }
+                  transition: { type: "spring", stiffness: 300 },
                 }}
-                className="p-8 rounded-2xl bg-card border border-border hover:shadow-lg transition-shadow"
+                className="p-8 rounded-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:border-white/40 transition-colors hover:shadow-lg"
               >
                 <div className="flex items-start gap-4 mb-6">
-                  <motion.div 
+                  <motion.div
                     className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center flex-shrink-0"
                     whileHover={{ rotate: 360 }}
                   >
                     <Truck className="w-6 h-6 text-primary" />
                   </motion.div>
                   <div>
-                    <h3 className="text-2xl font-bold text-foreground">{vehicle.brand}</h3>
-                    <p className="text-muted-foreground text-sm">{vehicle.type}</p>
+                    <h3 className="text-2xl font-bold text-white">{vehicle.brand}</h3>
+                    <p className="text-white/80 text-sm">{vehicle.type}</p>
                   </div>
                 </div>
                 <div className="space-y-3">
                   <div>
-                    <p className="text-sm text-muted-foreground mb-1">Capacidad</p>
-                    <p className="text-foreground font-medium">{vehicle.capacity}</p>
+                    <p className="text-sm text-white/70 mb-1">Capacidad</p>
+                    <p className="text-white font-medium">{vehicle.capacity}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground mb-1">Especialización</p>
-                    <p className="text-foreground font-medium">{vehicle.details}</p>
+                    <p className="text-sm text-white/70 mb-1">Especialización</p>
+                    <p className="text-white font-medium">{vehicle.details}</p>
                   </div>
                 </div>
               </motion.div>
@@ -516,21 +536,22 @@ export default function ServicesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="mt-12 p-8 bg-primary/5 border border-primary/20 rounded-2xl"
+            className="mt-12 p-8 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl"
           >
             <div className="flex items-start gap-4">
               <TrendingUp className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
               <div>
-                <h4 className="font-bold text-foreground mb-2">Mantenimiento preventivo</h4>
-                <p className="text-muted-foreground">
-                  Todos nuestros vehículos reciben mantenimiento regular para garantizar máxima confiabilidad y seguridad en cada viaje.
+                <h4 className="font-bold text-white mb-2">Mantenimiento preventivo</h4>
+                <p className="text-white/90">
+                  Todos nuestros vehículos reciben mantenimiento regular para garantizar máxima confiabilidad y
+                  seguridad en cada viaje.
                 </p>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
-
+      
       {/* CTA Section */}
       <motion.section
         initial={{ opacity: 0, y: 50 }}

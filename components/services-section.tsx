@@ -1,9 +1,10 @@
-'use client'
+"use client"
 
-import { Truck, MapPin, DollarSign, FileText } from 'lucide-react'
-import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
+import { Truck, MapPin, DollarSign } from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
+import { motion } from "framer-motion"
+import { useInView } from "react-intersection-observer"
 
 export default function ServicesSection() {
   const [ref, inView] = useInView({
@@ -14,18 +15,21 @@ export default function ServicesSection() {
   const services = [
     {
       icon: Truck,
-      title: 'Carga General',
-      description: 'Transportamos todo tipo de carga legal con máxima seguridad y profesionalismo.',
+      title: "Carga General",
+      description: "Transportamos todo tipo de carga legal con máxima seguridad y profesionalismo.",
+      image: "/packeges1.jpg",
     },
     {
       icon: Truck,
-      title: 'Encomiendas',
-      description: 'Paquetes y envíos personales con seguimiento completo hasta su destino.',
+      title: "Encomiendas",
+      description: "Paquetes y envíos personales con seguimiento completo hasta su destino.",
+      image: "/carga.jfif",
     },
     {
       icon: Truck,
-      title: 'Mercancías Especiales',
-      description: 'Cargas que requieren manejo especial y expertise profesional garantizado.',
+      title: "Mercancías Especiales",
+      description: "Cargas que requieren manejo especial y expertise profesional garantizado.",
+      image: "/packeges.jpg",
     },
   ]
 
@@ -34,39 +38,39 @@ export default function ServicesSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   }
 
   const itemVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 30 
+    hidden: {
+      opacity: 0,
+      y: 30,
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   }
 
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      x: -30 
+    hidden: {
+      opacity: 0,
+      x: -30,
     },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
+        ease: "easeOut",
+      },
+    },
   }
 
   return (
@@ -80,9 +84,7 @@ export default function ServicesSection() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Servicios Ofrecidos
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Servicios Ofrecidos</h2>
           <p className="text-lg text-muted-foreground max-w-2xl">
             Contamos con una amplia variedad de opciones de transporte adaptadas a tus necesidades.
           </p>
@@ -102,17 +104,24 @@ export default function ServicesSection() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="p-8 rounded-2xl bg-card border border-border hover:border-[#4ec3b3] hover:shadow-lg transition-all group"
+                className="overflow-hidden rounded-2xl bg-card border border-border hover:border-[#4ec3b3] hover:shadow-lg transition-all group"
               >
-                <div className="w-16 h-16 bg-[#152342] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#4ec3b3] transition-colors dark:bg-[#4ec3b3] dark:group-hover:bg-[#152342]">
-                  <Icon className="w-8 h-8 text-[#4ec3b3] group-hover:text-[#152342] dark:text-[#152342] dark:group-hover:text-[#4ec3b3]" />
+                <div className="relative w-full h-48 bg-muted overflow-hidden">
+                  <Image
+                    src={service.image || "/placeholder.svg"}
+                    alt={service.title}
+                    fill
+                    className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300"
+                  />
                 </div>
-                <h3 className="font-bold text-xl text-foreground mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {service.description}
-                </p>
+
+                <div className="p-8">
+                  <div className="w-16 h-16 bg-[#152342] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#4ec3b3] transition-colors dark:bg-[#4ec3b3] dark:group-hover:bg-[#152342]">
+                    <Icon className="w-8 h-8 text-[#4ec3b3] group-hover:text-[#152342] dark:text-[#152342] dark:group-hover:text-[#4ec3b3]" />
+                  </div>
+                  <h3 className="font-bold text-xl text-foreground mb-3">{service.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{service.description}</p>
+                </div>
               </motion.div>
             )
           })}
@@ -149,7 +158,8 @@ export default function ServicesSection() {
               </div>
               <div className="pt-4 border-t border-border">
                 <p className="text-sm text-muted-foreground">
-                  <span className="font-semibold text-foreground">Tiempos de Entrega:</span> 2 días después de que el camión salga desde La Paz
+                  <span className="font-semibold text-foreground">Tiempos de Entrega:</span> 2 días después de que el
+                  camión salga desde La Paz
                 </p>
               </div>
             </div>
@@ -168,9 +178,7 @@ export default function ServicesSection() {
               <h3 className="font-bold text-xl text-foreground">Tarifas</h3>
             </div>
             <div className="space-y-4">
-              <p className="text-muted-foreground">
-                Nuestras tarifas son variables y se calculan según:
-              </p>
+              <p className="text-muted-foreground">Nuestras tarifas son variables y se calculan según:</p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2">
                   <span className="text-[#4ec3b3] font-bold mt-1">•</span>
@@ -185,11 +193,8 @@ export default function ServicesSection() {
                   <span className="text-foreground">Tipo de mercancía</span>
                 </li>
               </ul>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link 
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Link
                   href="/quote"
                   className="mt-4 px-6 py-2 bg-[#4ec3b3] text-[#152342] rounded-lg font-semibold hover:bg-opacity-90 transition-all text-sm inline-block"
                 >

@@ -252,7 +252,7 @@ export default function Hero() {
             {/* Image 1: Top Right (Volvo - Highway) */}
             <div className="absolute top-10 right-0 w-72 h-52 z-10 transform rotate-3 hover:rotate-0 transition-transform duration-500 shadow-2xl rounded-xl overflow-hidden border-4 border-white">
               <img 
-                src="/volvo-fh16-truck-modern-logistics.jpg" 
+                src="/camion2.avif" 
                 alt="Transporte Nacional" 
                 className="w-full h-full object-cover"
               />

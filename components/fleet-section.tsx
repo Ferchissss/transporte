@@ -119,7 +119,7 @@ export default function FleetSection() {
               className="absolute -inset-4 bg-[#4ec3b3] rounded-full opacity-20 blur-3xl"
             />
             <motion.img 
-              src="/images/modern-fleet.jpg" 
+              src="/home.jpg" 
               alt="Nuestra Flota" 
               className="relative rounded-2xl shadow-2xl border border-white/10 z-10"
               whileHover={{ 
